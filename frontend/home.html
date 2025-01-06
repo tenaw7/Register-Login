@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- FontAwesome for icons -->
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="greeting">
+            <h1>እንኳን ደህና መጡ, <span id="userName"></span>!</h1>
+            <p>ሙከራችንን ያድንቁ! ይህ የመጀመሪያ ስራ ነው።🙏</p>
+            <p>We’re excited to have you on board. Feel free to explore.</p>
+        </div>
+        <div class="cta-buttons">
+            <button class="cta-btn"><i class="fas fa-home"></i> Dashboard</button>
+            <button class="cta-btn"><i class="fas fa-cogs"></i> Settings</button>
+            <button class="cta-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+        </div>
+        <footer>
+            <p>Made with ❤️ by Your Team <p><h2> ፍቅር ለሁላችን ❤️🙏 ጤ...🖊️</p>
+        </footer>
+    </div>
+
+    <script>
+        // Display username from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('user');
+        document.getElementById('userName').textContent = userName || "Guest";
+
+        // Log Out Functionality
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            // Clear user session (example for localStorage, sessionStorage, or cookies)
+            localStorage.removeItem('user'); // Assuming user info is stored in localStorage
+            sessionStorage.clear(); // Clear sessionStorage
+            document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear cookies
+
+            // Redirect to login page
+            window.location.href = "index.html"; // Change to your login page's actual path
+        });
+    </script>
+</body>
+</html>
